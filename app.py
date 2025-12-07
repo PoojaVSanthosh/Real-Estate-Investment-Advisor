@@ -7,12 +7,12 @@ import joblib
 # Load Production Model + Vectorizer
 # ---------------------------
 
-MODEL_URI = "models:/XGBoost Regressor/Production"
+model = "xgboost_model.pkl"
 VECTORIZER_PATH = "dict_vectorizer.pkl"
 
 @st.cache_resource
 def load_model():
-    model = mlflow.pyfunc.load_model(MODEL_URI)
+    model = joblib.load("xgboost_model.pkl")
     vectorizer = joblib.load(VECTORIZER_PATH)
     return model, vectorizer
 
